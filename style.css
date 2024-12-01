@@ -1,0 +1,552 @@
+:root {
+  --cor-text: black; /* Preto */
+  --color-ico:  rgb(0, 0, 238);
+  --md-sys-color-background: rgb(251 248 255);
+  --md-sys-color-on-background: rgb(27 27 32);
+  --md-sys-color-primary: rgb(187 195 255);
+  --md-sys-color-primary-container: rgb(29 41 121);
+  --md-sys-color-secondary: rgb(193 196 234);
+  --md-sys-color-secondary-container: rgb(58 62 93);
+  --md-sys-color-tertiary: rgb(248 173 249);
+  --md-sys-color-tertiary-container: rgb(84 24 90);
+  --md-sys-color-error: rgb(255 180 171);
+  --md-sys-color-error-container: rgb(147 0 10);
+  --md-sys-color-on-error-container: rgb(233, 233, 238);
+}
+
+body {
+  margin: 0; /* Remove a margem padrão */
+  position: relative; /* Necessário para que o z-index funcione */
+  overflow: scroll; /* Permitir rolagem da pagina */
+  background-color: var(--md-sys-color-on-error-container);
+}
+
+body::before {
+  content: ""; /* Cria um pseudo-elemento vazio */
+  position: fixed; /* Fixa a imagem em relação à tela */
+  top: 0 ; /* Alinha ao topo */
+  left: 0; /* Alinha à esquerda */
+  width: 100%; /* Largura total da tela */
+  height: 100%; /* Altura total da tela */
+  background-image: var(--background-image); /* Usa a variável da imagem de fundo */
+  background-size: cover; /* Faz a imagem cobrir todo o espaço */
+  background-position: center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Não repete a imagem */
+  opacity: 0.5; /* Ajusta a transparência (0.0 a 1.0, onde 0 é totalmente transparente) */
+  z-index: -1; /* Coloca atrás de outros elementos */
+}
+
+@import url(https://fonts.googleapis.com/css?family=Arimo);
+
+header {
+  position: relative;
+  height: 35px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 50px;
+}
+
+#menu {
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  margin-top: 23px;
+}
+
+#submenu {
+  display: none; /* O submenu fica oculto por padrão */
+  padding: 3px 0; /* Espaçamento para o submenu */
+  border-top: 1px solid #ccc; /* Borda acima do submenu */
+  
+}
+
+#logo {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 23px;
+}
+
+.svg_logo {
+  width: 100px;
+}
+
+.path_logo {
+  fill: var(--color-ico);
+}
+
+.caixa_de_aviso {
+  position: relative;
+  background-color: var(--md-sys-color-background);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  margin: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px var(--md-sys-color-tertiary-container);
+  display: flexbox;
+  height: max-content;
+  max-height: 90%;
+}
+
+.espacamento {
+  align-content: end;
+  display: flex;
+}
+
+.ferramentas{
+  position: relative;
+  background-color: var(--md-sys-color-background);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px var(--md-sys-color-tertiary-container);
+}  
+
+.intercambio {
+  position: relative;
+  background-color: var(--md-sys-color-background);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  height: 20pt;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px var(--md-sys-color-tertiary-container);
+  transition: height 0.5s;
+  overflow: hidden;
+}
+
+.intercambio.active {
+  height: max-content;
+  max-height: 90%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.video_intercambio {
+  justify-content: center;
+  display: block;
+  aspect-ratio: 16/9;
+  max-width: 1080px;
+  max-height: 720px;
+}
+
+
+.estagio {
+  position: relative;
+  background-color: var(--md-sys-color-background);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  height: 20pt;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px var(--md-sys-color-tertiary-container);
+  transition: height 0.5s;
+  overflow: hidden;
+}
+
+.estagio.active {
+  display: flexbox;
+  height: max-content;
+  max-height: 90%;
+}
+
+.horario {
+  position: relative;
+  background-color: var(--md-sys-color-background);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  height: 20pt;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px var(--md-sys-color-tertiary-container);
+  transition: height 0.5s;
+  overflow: hidden;
+}
+
+.horario.active {
+  display: flexbox;
+  height: max-content;
+  max-height: 90%;
+}
+
+.notas {
+  position: relative;
+  background-color: var(--md-sys-color-background);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  height: 20pt;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px var(--md-sys-color-tertiary-container);
+  transition: height 0.5s;
+  overflow: hidden;
+}
+
+.notas.active {
+  display: flexbox;
+  height: max-content;
+  max-height: 90%;
+}
+
+.frequencia {
+  position: relative;
+  background-color: var(--md-sys-color-background);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  height: 20pt;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px var(--md-sys-color-tertiary-container);
+  transition: height 0.5s;
+  overflow: hidden;
+}
+
+.frequencia.active {
+  display: flexbox;
+  height: max-content;
+  max-height: 90%;
+}
+
+
+/* Adicionando espaçamento quando a aba estiver aberta */
+.ferramentas.active.mns_box #mns {
+  padding-top: 10px;
+}
+
+#perfil {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  margin-right: 15px;
+  margin-top: 23px;
+}
+
+#mensagens {
+  position: relative;
+  background-color: var(--md-sys-color-background);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  margin: 20px;
+  border-bottom-left-radius: 35px; /* Inferior esquerda */
+  border-top-right-radius: 35px;  /* Superior direita */
+  box-shadow: 0px 4px 8px var(--md-sys-color-tertiary-container);
+}
+
+.faixa {
+  width: 100%;  /* A faixa vai ocupar toda a largura da tela */
+  height: 20px; /* Altura da faixa, pode ajustar conforme necessário */
+  background-color: var(--color-ico);  /* Cor de fundo azul */
+}
+
+#user_name {
+  display: flex;
+  font-size: 17pt;
+  cursor: pointer;
+}
+
+#sub_titulo {
+  display: flex;
+  justify-content: center;
+  font-size: 17pt;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#hard_font {
+  display: flex;
+  font-size: 15pt;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#simple_font {
+  display: flex;
+  font-size: 10pt;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1pt;
+}
+
+#rigth_icon {
+  top: 0;
+}
+.padding_especifico {
+  padding-left: 15pt;
+}
+
+.alinhamento_especifico {
+  display: flex;
+}
+
+#mns_box {
+  position: relative;
+  top: 0x;
+  left: 0px;
+  right: 0px;
+  margin-top: 5px;
+  height: auto;
+}
+
+/* Caixas dos pinceis */
+#box_submenu{
+  padding: 3px;
+  width: 95%;
+  margin-left: 1%;
+  margin-right: 1%;
+  display: block;
+}
+
+#icon {
+  width: 5px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 11px;
+}
+
+#icon_submenu{
+  width: 30px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#mns {
+  font-size: 15px;
+  padding: 5px;
+  width: 80%;
+  display: inline-block;
+}
+
+.material-symbols-outlined {
+  color: var(--color-ico);
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.icoG {
+  font-size: 45px;
+  margin-top: 17px;
+  margin-left: 28px;
+  position: relative;
+  transform: translate(-50%, -50%);
+  transition: font-variation-settings 0.3s;
+}
+
+.icoG:hover {
+  font-variation-settings: 
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48; 
+}
+
+.icoG:active {
+  font-variation-settings: 
+  'FILL' 1,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 48; 
+}
+
+.icoM {
+  align-items: center;
+  font-size: 28px;
+  margin-top: 13px;
+  margin-left: 10px;
+  position: relative;
+  transform: translate(-50%, -50%);
+  transition: font-variation-settings 0.3s;
+}
+
+#user_name:hover .icoM {
+  font-variation-settings: 
+    'FILL' 1,
+    'wght' 500,
+    'GRAD' 0,
+    'opsz' 48;
+}
+
+#user_name:active .icoM {
+  font-variation-settings: 
+    'FILL' 1,
+    'wght' 100,
+    'GRAD' 0,
+    'opsz' 48;
+}
+
+#user_name {
+  display: flex;
+  font-size: 17pt;
+  cursor: pointer; /* Adiciona o cursor de interatividade */
+}
+
+
+.icoP {
+  font-size: 20px;
+  position: relative;
+  transform: translate(-50%, -50%);
+  transition: font-variation-settings 0.3s;
+}
+
+
+.tools_size_letter_box{
+  margin-left: 5pt;
+  display: flex;
+  font-size: clamp(3em, 1em + 3vw, 2,5em);
+}
+
+.font {
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--cor-text);
+}
+
+.font_box{
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 17pt;
+  color: var(--cor-text);
+  
+}
+
+#menu_aba {
+  height: 100%;
+  width: 0; /* Inicialmente oculto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--md-sys-color-secondary); /* Fundo semi-transparente */
+  overflow-x: hidden;
+  transition: width 0.5s ease; /* Transição suave para largura */
+  z-index: 999; /* Acima da sobreposição */
+}
+
+
+#menu_aba.aberto {
+  width: 25%; /* Largura de 25% da tela ao abrir */
+}
+
+/*ação do aba do submenu*/
+.icoM {
+  align-items: center;
+  font-size: 28px;
+  margin-top: 13px;
+  margin-left: 10px;
+  position: relative;
+  transform: translate(-50%, -50%);
+  transition: font-variation-settings 0.3s;
+}
+
+#menu_bot:hover .icoM {
+  font-variation-settings: 
+    'FILL' 1,
+    'wght' 500,
+    'GRAD' 0,
+    'opsz' 48;
+}
+
+#menu_bot:active .icoM {
+  font-variation-settings: 
+    'FILL' 1,
+    'wght' 100,
+    'GRAD' 0,
+    'opsz' 48;
+}
+
+
+#menu_bot {
+  position: relative;
+  padding: 10px;
+  margin-left: 5px;
+  display: block;
+  cursor: pointer;
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1rem;
+  color: var(--md-sys-color-secondary-container);
+  transition: font-weight 5s;
+}
+
+#componentes {
+  position: relative;
+  background-color: var(--md-sys-color-background);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px var(--md-sys-color-tertiary-container);
+}
+
+#menu_bot:hover {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-background);
+}
+
+.logo_don_rafoni {
+  height:  200pt;
+}
+
+.popup_container {
+  display: flex;
+  align-items: center;
+  gap: 10pt; /* Espaço entre o texto e o ícone */
+  background-color: var(--md-sys-color-background);
+  text-align: center;  /* Alinha o texto horizontalmente no centro */
+}
+
+.popup_description {
+  font-size: 8pt;
+  color: rgb(0, 0, 0);
+  display: block;
+  
+}
+
+.popup_icon {
+  font-size: 26pt;
+  color: rgb(255, 132, 0);
+  display: flex;
+  align-items: center;  /* Alinha o texto verticalmente no centro */
+
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 27pt;
+}
+
+
